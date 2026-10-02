@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import './styles/tokens.css'
 import './styles/base.css'
 import { StoreProvider } from './store/store'
@@ -12,7 +12,7 @@ import Settings from './pages/Settings'
 
 createRoot(document.getElementById('root')!).render(
   <StoreProvider>
-    <HashRouter>
+    <MemoryRouter initialEntries={[(() => { try { return localStorage.getItem('ledger.route') || '/' } catch { return '/' } })()]}>
       <Routes>
         <Route element={<Shell />}>
           <Route index element={<Overview />} />
@@ -24,6 +24,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </MemoryRouter>
   </StoreProvider>,
 )

@@ -1,10 +1,12 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 const links = [['/', 'Overview'], ['/stocks', 'Stocks'], ['/crypto', 'Crypto'], ['/gold', 'Gold'], ['/cash', 'Cash'], ['/expenses', 'Expenses'], ['/settings', 'Settings']]
 export default function Shell() {
   const [theme, setTheme] = useState(() => { try { return localStorage.getItem('ledger.theme') ?? 'dark' } catch { return 'dark' } })
   useEffect(() => { document.documentElement.dataset.theme = theme; try { localStorage.setItem('ledger.theme', theme) } catch { /* ignore */ } }, [theme])
+  const { pathname } = useLocation()
+  useEffect(() => { try { localStorage.setItem('ledger.route', pathname) } catch { /* ignore */ } }, [pathname])
   return (
     <div className="app">
       <aside className="side">
