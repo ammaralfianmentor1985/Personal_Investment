@@ -4,9 +4,9 @@
   --r1: 8px; --r2: 16px;
   --h-sm: 32px; --h-md: 40px; --h-lg: 48px;
 
-  --font-serif: 'Fraunces', 'Newsreader', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   /* type scale: size / line-height (all line-heights on 8-pt) */
   --t-xs: 12px; --l-xs: 16px;

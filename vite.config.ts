@@ -1,3 +1,5 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-export default defineConfig({ plugins: [react()], base: './' })
+import { viteSingleFile } from 'vite-plugin-singlefile'
+// Single self-contained HTML (no network needed to load) so it opens straight from disk.
+export default defineConfig({ plugins: [react(), viteSingleFile()], base: './' })
