@@ -42,8 +42,8 @@ export default function Expenses() {
       </div>
       <div style={{ height: 24 }} />
       <Card title="Transactions">
-        {list.length === 0 ? <div className="empty">No expenses this month.</div> : <table><thead><tr><th>Date</th><th>Category</th><th>Note</th><th>Amount</th><th /></tr></thead>
-          <tbody>{list.map(e => <tr key={e.id}><td className="num">{e.date}</td><td style={{ textAlign: 'right' }}>{e.category}</td><td className="muted" style={{ textAlign: 'right' }}>{e.note}</td><td className="num">{idr(e.amount)}</td><td><button className="btn ghost sm" onClick={() => set(p => ({ ...p, expenses: p.expenses.filter(x => x.id !== e.id) }))}>✕</button></td></tr>)}</tbody></table>}
+        {list.length === 0 ? <div className="empty">No expenses this month.</div> : <div className="scroll"><table><thead><tr><th>Date</th><th>Category</th><th>Note</th><th>Amount</th><th /></tr></thead>
+          <tbody>{list.map(e => <tr key={e.id}><td className="num">{e.date}</td><td style={{ textAlign: 'right' }}>{e.category}</td><td className="muted" style={{ textAlign: 'right' }}>{e.note}</td><td className="num">{idr(e.amount)}</td><td><button className="btn ghost sm" onClick={() => set(p => ({ ...p, expenses: p.expenses.filter(x => x.id !== e.id) }))}>✕</button></td></tr>)}</tbody></table></div>}
       </Card>
     </>
   )

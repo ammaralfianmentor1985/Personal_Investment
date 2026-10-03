@@ -1,6 +1,6 @@
 import type { Holding, Quote, State, Currency } from './types'
 
-export const STALE_MS = 24 * 3600 * 1000
+export const STALE_MS = 30 * 24 * 3600 * 1000
 export const uid = () => Math.random().toString(36).slice(2, 10)
 
 /** Position from lots using average-cost method. */
@@ -20,7 +20,7 @@ export const toIdr = (amt: number, cur: Currency, fx: number) => (cur === 'USD' 
 export function quoteKey(h: Holding) { return `${h.kind}:${h.symbol.toLowerCase()}` }
 
 export function priceOf(h: Holding, quotes: State['quotes']) {
-  if (h.manualPrice != null) return { price: h.manualPrice, asOf: Date.now(), source: 'manual' as const }
+  if (h.manualPrice != null) return { price: h.manualPrice, asOf: h.manualAt ?? Date.now(), source: 'manual' as const }
   const q: Quote | undefined = quotes[quoteKey(h)]
   return q ? { price: q.price, asOf: q.asOf, source: 'live' as const } : null
 }
@@ -35,7 +35,7 @@ export function valueOf(h: Holding, s: State) {
     qty, avg, price, value, cost, pl, plPct: cost > 0 ? pl / cost : 0,
     valueIdr: toIdr(value, h.currency, s.fx.usdIdr),
     costIdr: toIdr(cost, h.currency, s.fx.usdIdr),
-    stale: !p || (p.source === 'live' && Date.now() - p.asOf > STALE_MS),
+    stale: !p || Date.now() - p.asOf > STALE_MS,
     mos: h.intrinsic && h.intrinsic > 0 ? (h.intrinsic - price) / h.intrinsic : null,
   }
 }
@@ -55,7 +55,7 @@ export function attention(s: State) {
   for (const h of s.holdings) {
     const v = valueOf(h, s)
     if (v.qty === 0) continue
-    if (v.stale) out.push(`${h.symbol.toUpperCase()}: price is missing or stale`)
+    if (v.stale) out.push(`${h.symbol.toUpperCase()}: price not set or older than 30 days`)
     if (v.cost > 0 && v.plPct < -0.2) out.push(`${h.symbol.toUpperCase()} is ${(v.plPct * 100).toFixed(0)}% below your cost`)
     if (v.mos != null && v.mos < 0) out.push(`${h.symbol.toUpperCase()} trades above your intrinsic value`)
   }

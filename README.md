@@ -1,18 +1,15 @@
 # Ledger — personal wealth tracker
 
-Track stocks (IDX + global), crypto, gold, cash and expenses in one private site.
-Data lives only in your browser (localStorage); export/import JSON from Settings.
+Track stocks (IDX + global), crypto, gold, cash and expenses in one private dashboard.
+Published as a Claude Artifact (open the link on any device while signed in).
 
-- Stack: Vite + React + TypeScript, no backend
+- Stack: Vite + React + TypeScript, single-file build
+- Storage: private per-user document in the artifact database (`data/users/<id>/ledger`), with a local cache
+- Prices: entered by hand (edit the price cell in any table); live price APIs are blocked inside artifacts
 - Design: 8-pt grid, dark-green neutral base, amber accent reserved for items needing attention
-- Prices: CoinGecko (crypto, gold via PAXG), open.er-api (USD→IDR), Yahoo-style quotes for stocks; manual override always wins
 
 ```
-Offline: open `offline/ledger.html` directly in a browser (no server, no network needed; prices need internet, manual prices work offline).
-Rebuild it with `npm run build && cp dist/index.html offline/ledger.html`.
-
 npm install
-npm run dev     # local
-npm test        # calc tests
-npm run build   # static output in dist/
+npm test
+npm run build && node scripts/make-artifact.mjs artifact/ledger.html   # artifact/ledger.html is what gets published
 ```

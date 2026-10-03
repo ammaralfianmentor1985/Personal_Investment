@@ -1,4 +1,4 @@
-const COLORS = ['#e8e4d8', '#6fc29a', '#9fb3a9', '#4f6b5f']
+const COLORS = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)']
 export function Donut({ data }: { data: { label: string; value: number }[] }) {
   const total = data.reduce((a, d) => a + d.value, 0) || 1
   const R = 64, C = 2 * Math.PI * R
