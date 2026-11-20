@@ -55,6 +55,6 @@ python tools/stats.py journal/
 
 ## Still to confirm
 - [ ] Make this repository private.
-- [ ] Verify the gold contract size (100 oz per lot?) in the broker terminal's symbol specification.
-- [ ] Confirm what you mean by a "pip" on gold, or keep using dollars only.
+- [x] Verify the gold contract size: 100 oz per lot (confirmed 2026-11-20).
+- [x] Units: dollars only, no pips (decided 2026-11-20).
 - [ ] Set a minimum reward-to-risk, if you want one.

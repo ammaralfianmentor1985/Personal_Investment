@@ -1,13 +1,13 @@
 # XAUUSD (gold)
 
-## Contract (verify in your broker terminal)
+## Contract
 | Item | Value | Status |
 |---|---|---|
-| Contract size | 100 troy oz per 1.00 lot | **Not yet verified.** Third-party sources only. |
+| Contract size | 100 troy oz per 1.00 lot | **Verified 2026-11-20** from the broker terminal's own profit figures |
 | Minimum lot / step | 0.01 / 0.01 | The broker's official account page shows a 0.01 minimum lot |
-| Money per $1.00 move | 0.01 lot = $1 · 0.03 = $3 · 0.05 = $5 · 1.00 = $100 | Valid only if the contract size above is right |
+| Money per $1.00 move | 0.01 lot = $1 · 0.03 = $3 · 0.05 = $5 · 1.00 = $100 | Verified |
 
-**To verify:** in the broker's web terminal, open the XAUUSD symbol's specification and read the contract size. Then set `"verified": true` in `instruments/specs.json`.
+**Verified** by matching the terminal's own profit figures to `tools/calc.py` (a 0.05-lot position moved $8.954 and showed $44.77). Re-check if the broker changes the contract.
 
 ## Feeds: TradingView versus the broker
 - TVC:GOLD is TradingView's own gold feed. It is **not** the broker's price. The difference changes over time and can be several tenths of a dollar or more.

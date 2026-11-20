@@ -6,8 +6,8 @@
     "unit": "troy ounces",
     "min_lot": 0.01,
     "lot_step": 0.01,
-    "verified": false,
-    "source": "Third-party listings say 100 oz per lot; broker's official page confirms 0.01 minimum lot. Confirm contract size in the terminal."
+    "verified": true,
+    "source": "Confirmed 2026-11-20 from the broker terminal's own profit figures: a 0.05-lot position showed $5 per $1.00 move, i.e. 100 oz per lot. Minimum lot 0.01 per the broker's account page."
   },
   "USOIL": {
     "description": "WTI crude oil CFD",
