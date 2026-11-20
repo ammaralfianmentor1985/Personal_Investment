@@ -1,0 +1,30 @@
+{
+  "_note": "contract_size = units per 1.00 lot. Money per 1.00 price move = contract_size x lot. VERIFY each value in your broker terminal (symbol specification) and set verified to true. The calculator refuses to compute money for a symbol whose contract_size is null.",
+  "XAUUSD": {
+    "description": "Gold vs US dollar",
+    "contract_size": 100,
+    "unit": "troy ounces",
+    "min_lot": 0.01,
+    "lot_step": 0.01,
+    "verified": false,
+    "source": "Third-party listings say 100 oz per lot; broker's official page confirms 0.01 minimum lot. Confirm contract size in the terminal."
+  },
+  "USOIL": {
+    "description": "WTI crude oil CFD",
+    "contract_size": null,
+    "unit": "barrels",
+    "min_lot": 0.01,
+    "lot_step": 0.01,
+    "verified": false,
+    "source": "Not set. Look up the contract size in your broker terminal before trading oil."
+  },
+  "BTCUSD": {
+    "description": "Bitcoin vs US dollar CFD",
+    "contract_size": null,
+    "unit": "BTC",
+    "min_lot": 0.01,
+    "lot_step": 0.01,
+    "verified": false,
+    "source": "Not set. Look up the contract size in your broker terminal before trading Bitcoin."
+  }
+}

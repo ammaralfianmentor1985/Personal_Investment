@@ -1,0 +1,9 @@
+{
+  "_help": "Copy this file to risk/limits.json and fill in your own numbers. The agent never invents them. Dollar amounts are account money per trade.",
+  "allowed_lots": [],
+  "exception_lots": [],
+  "normal_risk_usd": null,
+  "max_risk_usd": null,
+  "daily_loss_count_limit": null,
+  "min_rr": null
+}
